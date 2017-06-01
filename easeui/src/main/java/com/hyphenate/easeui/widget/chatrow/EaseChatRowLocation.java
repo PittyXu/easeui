@@ -1,19 +1,17 @@
 package com.hyphenate.easeui.widget.chatrow;
 
+import android.content.Context;
+import android.view.View;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMLocationMessageBody;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.chat.EMMessage.ChatType;
 import com.hyphenate.easeui.R;
-import com.hyphenate.easeui.ui.EaseBaiduMapActivity;
 import com.hyphenate.exceptions.HyphenateException;
 import com.hyphenate.util.LatLng;
-
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
 
 public class EaseChatRowLocation extends EaseChatRow{
 
@@ -45,7 +43,7 @@ public class EaseChatRowLocation extends EaseChatRow{
 		if (message.direct() == EMMessage.Direct.SEND) {
 		    setMessageSendCallback();
             switch (message.status()) {
-            case CREATE: 
+            case CREATE:
                 progressBar.setVisibility(View.GONE);
                 statusView.setVisibility(View.VISIBLE);
                 break;
@@ -74,21 +72,21 @@ public class EaseChatRowLocation extends EaseChatRow{
             }
         }
     }
-    
+
     @Override
     protected void onUpdateView() {
         adapter.notifyDataSetChanged();
     }
-    
+
     @Override
     protected void onBubbleClick() {
-        Intent intent = new Intent(context, EaseBaiduMapActivity.class);
-        intent.putExtra("latitude", locBody.getLatitude());
-        intent.putExtra("longitude", locBody.getLongitude());
-        intent.putExtra("address", locBody.getAddress());
-        activity.startActivity(intent);
+//        Intent intent = new Intent(context, EaseBaiduMapActivity.class);
+//        intent.putExtra("latitude", locBody.getLatitude());
+//        intent.putExtra("longitude", locBody.getLongitude());
+//        intent.putExtra("address", locBody.getAddress());
+//        activity.startActivity(intent);
     }
-    
+
     /*
 	 * listener for map clicked
 	 */
@@ -105,7 +103,7 @@ public class EaseChatRowLocation extends EaseChatRow{
 
 		@Override
 		public void onClick(View v) {
-		   
+
 		}
 	}
 

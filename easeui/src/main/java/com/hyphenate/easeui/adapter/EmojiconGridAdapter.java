@@ -7,11 +7,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.hyphenate.easeui.R;
 import com.hyphenate.easeui.domain.EaseEmojicon;
 import com.hyphenate.easeui.domain.EaseEmojicon.Type;
 import com.hyphenate.easeui.utils.EaseSmileUtils;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -24,7 +24,7 @@ public class EmojiconGridAdapter extends ArrayAdapter<EaseEmojicon>{
         super(context, textViewResourceId, objects);
         this.emojiconType = emojiconType;
     }
-    
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView == null){
@@ -48,12 +48,12 @@ public class EmojiconGridAdapter extends ArrayAdapter<EaseEmojicon>{
             if(emojicon.getIcon() != 0){
                 imageView.setImageResource(emojicon.getIcon());
             }else if(emojicon.getIconPath() != null){
-                Glide.with(getContext()).load(emojicon.getIconPath()).placeholder(R.drawable.ease_default_expression).into(imageView);
+                Picasso.with(getContext()).load(emojicon.getIconPath()).placeholder(R.drawable.ease_default_expression).into(imageView);
             }
         }
-        
-        
+
+
         return convertView;
     }
-    
+
 }

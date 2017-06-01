@@ -5,12 +5,12 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.easeui.EaseConstant;
 import com.hyphenate.easeui.R;
 import com.hyphenate.easeui.EaseUI;
 import com.hyphenate.easeui.domain.EaseEmojicon;
+import com.squareup.picasso.Picasso;
 
 /**
  * big emoji icons
@@ -24,10 +24,10 @@ public class EaseChatRowBigExpression extends EaseChatRowText{
     public EaseChatRowBigExpression(Context context, EMMessage message, int position, BaseAdapter adapter) {
         super(context, message, position, adapter);
     }
-    
+
     @Override
     protected void onInflateView() {
-        inflater.inflate(message.direct() == EMMessage.Direct.RECEIVE ? 
+        inflater.inflate(message.direct() == EMMessage.Direct.RECEIVE ?
                 R.layout.ease_row_received_bigexpression : R.layout.ease_row_sent_bigexpression, this);
     }
 
@@ -47,14 +47,14 @@ public class EaseChatRowBigExpression extends EaseChatRowText{
         }
         if(emojicon != null){
             if(emojicon.getBigIcon() != 0){
-                Glide.with(activity).load(emojicon.getBigIcon()).placeholder(R.drawable.ease_default_expression).into(imageView);
+                Picasso.with(activity).load(emojicon.getBigIcon()).placeholder(R.drawable.ease_default_expression).into(imageView);
             }else if(emojicon.getBigIconPath() != null){
-                Glide.with(activity).load(emojicon.getBigIconPath()).placeholder(R.drawable.ease_default_expression).into(imageView);
+                Picasso.with(activity).load(emojicon.getBigIconPath()).placeholder(R.drawable.ease_default_expression).into(imageView);
             }else{
                 imageView.setImageResource(R.drawable.ease_default_expression);
             }
         }
-        
+
         handleTextMessage();
     }
 }

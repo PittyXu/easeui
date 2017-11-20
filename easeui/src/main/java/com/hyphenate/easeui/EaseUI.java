@@ -67,7 +67,10 @@ public final class EaseUI {
     public void popActivity(Activity activity){
         activityList.remove(activity);
     }
-    
+
+    public Activity getTopActivity(){
+        return activityList.get(0);
+    }
     
     private EaseUI(){}
     
@@ -160,6 +163,12 @@ public final class EaseUI {
             @Override
             public void onMessageDelivered(List<EMMessage> messages) {
             }
+
+            @Override
+            public void onMessageRecalled(List<EMMessage> messages) {
+
+            }
+
             @Override
             public void onMessageChanged(EMMessage message, Object change) {
                 
